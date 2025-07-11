@@ -1,0 +1,6 @@
+{
+  "target": "https://api.gempanel.top/",
+  "port": "443",
+  "certPath": "/etc/letsencrypt/live/api.exirpro.org/fullchain.pem",
+  "keyPath": "/etc/letsencrypt/live/api.exirpro.org/privkey.pem"
+}
