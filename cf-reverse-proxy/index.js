@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 require('dotenv').config();
 require('debug').enable('http-proxy:*');
-const CONFIG_FILE = '/root/cf-panel/config.json';
+const CONFIG_FILE = '/root/reverse-proxy/cf-panel/config.json';
 let server = null;
 let currentConfig = null;
 
@@ -62,6 +62,7 @@ function startServer(config) {
 
 function restartIfNeeded() {
   const newConfig = loadConfig();
+  if(newConfig.keyPath=="" || newConfig.certPath=="") return
   if (!currentConfig || configsDiffer(currentConfig, newConfig)) {
     console.log('🔁 Detected config change, restarting server...');
     if (server) {
