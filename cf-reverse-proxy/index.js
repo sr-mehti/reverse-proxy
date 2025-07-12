@@ -33,6 +33,8 @@ function startServer(config) {
   app.use(morgan('combined'));
   app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    req.headers['connection'] = 'close'; // override incoming
+    res.setHeader('Connection', 'close'); // force response to close
     next();
   });
 
